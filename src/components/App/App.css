@@ -15,4 +15,21 @@
 
 .App ul {
   display: flex;
+  height: 800px;
+  width: 900px;
+  align-content: center;
+}
+
+div img.Display {
+  padding: 40px;
+  margin-right: 80px;
+}
+
+button {
+  width: 100px;
+  background-color: #ffff;
+}
+
+body {
+  background-color: #b8b8f3;
 }

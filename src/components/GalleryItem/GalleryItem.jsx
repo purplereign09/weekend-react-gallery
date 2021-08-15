@@ -21,26 +21,26 @@ const GalleryItem = ({item, setLikes}) => {
 
     if(displayImage) {
         return (
-            <li>
+            <div>
                 <GalleryImage
                     item = {item}
                     showDescription = {showDescription}
                 />
                 <button onClick={ () => setLikes(item.id)}>Like</button>
                 <p>{item.likes}</p>
-            </li>
+            </div>
         )
     }
 
     //'else' condition is reached
     return (
-        <li>
+        <div>
             <GalleryDescription
                 item = {item}
             />
             <button onClick={ () => setLikes(item.id)}>Like</button>
             <p>{item.likes}</p>
-        </li>
+        </div>
        
     )
 }
