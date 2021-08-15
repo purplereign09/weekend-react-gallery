@@ -1,22 +1,23 @@
-import GalleryItems from '../GalleryItem/GalleryItem';
-function GalleryList ({props}) {
+import React from 'react';
+import GalleryItem from '../GalleryItem/GalleryItem';
 
-    console.log('in list props', props);
+
+const GalleryList = ({ gallery, setLikes}) => {
+
+
     return (
         <ul>
-            {
-                galleryItems [props]=
-                props.list.map(gallery => (
-                    <galleryItem key={gallery.id} item={gallery}
-                    updateLikes={updateLikes}/>
-                ))
+            {gallery.map ((item => (
+                <GalleryItem
+                key = {item.id}
+                item = {item}
+                setLikes = {setLikes}
+                />
+            )))}
 
-            }
        
         </ul>
-            
-
-    );
+    )
 
 }
 

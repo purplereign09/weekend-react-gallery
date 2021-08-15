@@ -1,49 +1,46 @@
+import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
+
+//importing the main list
 import GalleryList from '../GalleryList/GalleryList';
 
 
 
+//use arrow functions!
+let App = () => {
 
-
-
-function App() {
-
-    let[galleryList, setGalleryList] = useState()
+    let[gallery, setGallery] = useState([]);
     
 
   //code runs on page load
   useEffect(() => {
-
-    
     
     getGalleryItems();
-    imageLikeCount();
-    
+     
   },[])  
    
-    
-  function getGalleryItems(){
-
-  axios.get('/images').then(response => {
+  //getting gallery items from array  
+  let getGalleryItems = () => {
+  axios.get('/gallery')
+      .then(response => {
             console.log('these are my gallery items:', (response.data));
             console.log('Get /images response', response.data)
-            galleryItems(response.data);
-
+            setGallery(response.data);
         })
         .catch(error => {
-            console.log('Get /list error', error)
+            console.log('Get /gallery error', error)
         })
-    ;//end GET
-  } 
+  }//end GET} 
     
-  function imageLikeCount(){
-    axios.put('/like/:id').then(response => {
+  let setLikes = (id) => {
+    axios.put(`/gallery/like/${id}`)
+      .then(response => {
+        getGalleryItems();
           console.log( 'PUT likes for image successfully');
         }).catch(error => {
             console.log('Failed to PUT:', error);
-          alert('Failed to PUT. See console for details.')
         })
       }
     
@@ -53,19 +50,14 @@ function App() {
         <header className="App-header">
           <h1 className="App-title">Photoshop Work</h1>
         </header>
-         <div className="container">
         <GalleryList 
-          galleryList={galleryList}
+          gallery={gallery}
+          setLikes={setLikes}
         />
-        <div className="card">
-        
-       
-       </div>
-       </div>
       </div>
     );
     
-    }
+  }
 
 
 export default App;
