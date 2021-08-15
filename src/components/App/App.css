@@ -18,18 +18,21 @@
   height: 800px;
   width: 900px;
   align-content: center;
+  margin-left: 60px;
 }
 
 div img.Display {
-  padding: 40px;
-  margin-right: 80px;
+  padding-right: 120px;
+  margin-left: 60px;
 }
 
 button {
   width: 100px;
   background-color: #ffff;
+  margin-right: 70px;
 }
 
 body {
   background-color: #b8b8f3;
 }
+
